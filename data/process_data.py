@@ -6,6 +6,15 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
+    '''
+    load_data
+    Load data from two csv files and merge into a dataframe
+    input:
+    messages_filepath file of messages csv
+    categories_filepath file of categories cvs
+    returns:
+    df the result of merge the two orginal files
+    '''
   
     # read in file
     messages = pd.read_csv(messages_filepath)
@@ -16,6 +25,14 @@ def load_data(messages_filepath, categories_filepath):
 
 # clean data
 def clean_data(df):
+  '''
+    clean_data
+    clean the merge dataframe
+    input:
+    df the mergue dataframe
+    returns:
+    df the dataframe with new columns of 0 and 1 for each categorie and without duplicates
+    '''
     # create categories
     categories = df['categories'].str.split(';', expand=True)
     # keep the first row of the categories dataframe
@@ -41,7 +58,17 @@ def clean_data(df):
     
     
     # load to database
+    
 def save_data(df, database_filename):
+    '''
+    save_data
+    save dataframe into a sqlite database
+    input:
+    df the clean dataframe
+    database_filename name of database
+    returns:
+    db the result is the DisasterResponse database 
+    '''
      engine=create_engine('sqlite:///' + database_filename)   
      df.to_sql('disaster_table', engine, index=False , if_exists='replace')
 
