@@ -10,6 +10,7 @@ This project analyze information from a real data set that contains real message
 *data/process_data.py
 
 the file contains the code to do the following:
+        
         Load the datasets.
         Merge the datasets.
         Clean the data.
