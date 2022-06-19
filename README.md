@@ -6,11 +6,41 @@ This project analyze information from a real data set that contains real message
 
 ### Contents in the repository:
 
-* data/process_data.py
+### ETL
+*data/process_data.py
 
 the file contains the code to do the following:
-        Loads the datasets.
-        Merges the datasets.
-        Cleans the data.
-        Stores it in a SQLite database.
+        Load the datasets.
+        Merge the datasets.
+        Clean the data.
+        Store it in a SQLite database.
+ 
+ ### Model
+ *models/train_classifier.py
+ 
+ the file contains the code to do the following:
+ 
+        Load information from the SQLite database.
+        Create train and test datasets
+        Train and tune a machine learning model using GridSearchCV.
+        Display the results on the test set.
+        Create a pickle file with the model.
+        
+### app
+* app/run.py
+
+        Show the results in a Flask web app.
+        
+### Instructions: (taken from the original course file)
+1. Run the following commands in the project's root directory to set up the database and model.
+
+    - To run ETL pipeline that cleans data and stores in database
+        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+    - To run ML pipeline that trains classifier and saves
+        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+
+2. Run the following command in the app's directory to run web app.
+    `python run.py`
+
+3. Go to http://0.0.0.0:3001/
         
