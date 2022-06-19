@@ -61,6 +61,12 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    build_model
+    create the ML model with the informacion of database
+    returns:
+    model the definition of de ML model
+    '''
     pipeline = Pipeline([('vect', CountVectorizer(tokenizer=tokenize)),('tfidf', TfidfTransformer()),('clf', MultiOutputClassifier(RandomForestClassifier()))])
     # set parameters
     parameters = { 'clf__estimator__n_estimators': [10, 15, 20] }
@@ -87,6 +93,15 @@ def evaluate_model(model, X_test, Y_test):
 
 
 def save_model(model, model_filepath):
+    '''
+    save_model
+    save model into a pickle archive
+    input:
+    model the parameters and definitions of the model
+    model_filepath location of the model
+    returns:
+    pkl archive with the model
+    '''
     pickle.dump(model, open(model_filepath, 'wb'))
 
 
