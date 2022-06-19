@@ -27,7 +27,7 @@ def load_data(database_filepath):
        X (DataFrame) : features dataframe
        Y (DataFrame) : target dataframe
        category (list) : target labels list
-       """
+    """
     engine = create_engine('sqlite:///{}'.format(database_filepath))
     df = pd.read_sql_table('disaster_table', engine)
     X = df['message']  # Message Column
