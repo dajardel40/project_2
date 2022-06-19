@@ -25,7 +25,7 @@ def load_data(messages_filepath, categories_filepath):
 
 # clean data
 def clean_data(df):
-  '''
+    '''
     clean_data
     clean the merge dataframe
     input:
@@ -37,7 +37,7 @@ def clean_data(df):
     categories = df['categories'].str.split(';', expand=True)
     # keep the first row of the categories dataframe
     row = categories.iloc[0,:]
-  # use this row to extract a list of new column names for categories.
+    # use this row to extract a list of new column names for categories.
     category_colnames = row.apply(lambda x: x[:-2]).values.tolist()
     # rename the columns of `categories`
     categories.columns = category_colnames
